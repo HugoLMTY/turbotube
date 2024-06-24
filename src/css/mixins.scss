@@ -1,0 +1,464 @@
+@mixin setGlobalColors($light, $dark, $name) {
+  :root {
+    body {
+      &.body--dark {
+        #{"--"+$name}: $dark;
+      }
+      &.body--light {
+        #{"--"+$name}: $light;
+      }
+    }
+  }
+
+  body {
+    &.body--light {
+      .text-#{$name} {
+        color: $light !important;
+      }
+      .text-#{$name}-hover:hover {
+        color: $light !important;
+      }
+
+      @for $i from 1 through 10 {
+        .bg-#{$name}-#{$i * 10} {
+          background-color: #{$light}#{$i * 10} !important;
+        }
+        .bg-#{$name}-#{$i * 10}-hover:hover {
+          background-color: #{$light}#{$i * 10} !important;
+        }
+      }
+
+      .bg-#{$name} {
+        background-color: $light !important;
+      }
+      .bg-#{$name}-hover:hover {
+        background-color: $light !important;
+      }
+
+      .border-#{$name} {
+        @if $name == 'none' {
+          border: none !important;
+        } @else {
+          border-color: $light !important;
+          border-style: solid;
+          border-width: 1px;
+
+          &-thick {
+            border-width: 2px;
+          }
+
+          &-thicker {
+            border-width: 3px;
+          }
+
+          &-thickest {
+            border-width: 4px;
+          }
+
+          &-dashed {
+            border-style: dashed;
+          }
+        }
+      }
+      .border-#{$name}-hover:hover {
+        border-color: $light !important;
+        border-style: solid;
+        border-width: 1px;
+
+        &-thick {
+          border-width: 2px;
+        }
+
+        &-thicker {
+          border-width: 3px;
+        }
+
+        &-thickest {
+          border-width: 4px;
+        }
+
+        &-dashed {
+          border-style: dashed;
+        }
+      }
+
+      .inner-border-#{$name} {
+        @if $name == 'none' {
+          box-shadow: inset none !important;
+        } @else {
+          box-shadow: 0px 0px 0px 1px $light !important;
+
+          &-thick {
+            box-shadow: 0px 0px 0px 2px $light !important;
+          }
+
+          &-thicker {
+            box-shadow: 0px 0px 0px 3px $light !important;
+          }
+
+          &-thickest {
+            box-shadow: 0px 0px 0px 4px $light !important;
+          }
+        }
+      }
+      .inner-border-#{$name}-hover:hover {
+        box-shadow: 0px 0px 0px 1px $light !important;
+
+        &-thick {
+          box-shadow: 0px 0px 0px 2px $light !important;
+        }
+
+        &-thicker {
+          box-shadow: 0px 0px 0px 3px $light !important;
+        }
+
+        &-thickest {
+          box-shadow: 0px 0px 0px 4px $light !important;
+        }
+      }
+
+      .shadow-#{$name} {
+        @if $name == 'none' {
+          box-shadow: none !important;
+        } @else {
+          box-shadow: 0px 0px 10px 1px $light !important;
+        }
+
+        &-dense {
+          &::before {
+            box-shadow: 0px 0px 5px 1px $light !important;
+          }
+          box-shadow: 0px 0px 5px 1px $light !important;
+        }
+
+        &-denser {
+          &::before {
+            box-shadow: 0px 0px 3px 1px $light !important;
+          }
+          box-shadow: 0px 0px 3px 1px $light !important;
+        }
+
+        &-densest {
+          &::before {
+            box-shadow: 0px 0px 1px 1px $light !important;
+          }
+          box-shadow: 0px 0px 1px 1px $light !important;
+        }
+
+        &-spare {
+          &::before {
+            box-shadow: 0px 0px 10px 1px $light !important;
+          }
+          box-shadow: 0px 0px 10px 1px $light !important;
+        }
+
+        &-sparer {
+          &::before {
+            box-shadow: 0px 0px 15px 1px $light !important;
+          }
+          box-shadow: 0px 0px 15px 1px $light !important;
+        }
+
+        &-sparest {
+          &::before {
+            box-shadow: 0px 0px 20px 1px $light !important;
+          }
+          box-shadow: 0px 0px 20px 1px $light !important;
+        }
+      }
+      .shadow-#{$name}-hover:hover {
+        box-shadow: 0px 0px 10px 1px $light !important;
+
+        &-dense {
+          &::before {
+            box-shadow: 0px 0px 5px 1px $light !important;
+          }
+          box-shadow: 0px 0px 5px 1px $light !important;
+        }
+
+        &-denser {
+          &::before {
+            box-shadow: 0px 0px 3px 1px $light !important;
+          }
+          box-shadow: 0px 0px 3px 1px $light !important;
+        }
+
+        &-densest {
+          &::before {
+            box-shadow: 0px 0px 1px 1px $light !important;
+          }
+          box-shadow: 0px 0px 1px 1px $light !important;
+        }
+
+        &-spare {
+          &::before {
+            box-shadow: 0px 0px 10px 1px $light !important;
+          }
+          box-shadow: 0px 0px 10px 1px $light !important;
+        }
+
+        &-sparer {
+          &::before {
+            box-shadow: 0px 0px 15px 1px $light !important;
+          }
+          box-shadow: 0px 0px 15px 1px $light !important;
+        }
+
+        &-sparest {
+          &::before {
+            box-shadow: 0px 0px 20px 1px $light !important;
+          }
+          box-shadow: 0px 0px 20px 1px $light !important;
+        }
+      }
+    }
+
+    &.body--dark {
+      .text-#{$name} {
+        color: $dark !important;
+      }
+      .text-#{$name}-hover:hover {
+        color: $dark !important;
+      }
+
+      @for $i from 1 through 10 {
+        .bg-#{$name}-#{$i * 10} {
+          background-color: #{$dark}#{$i * 10} !important;
+        }
+        .bg-#{$name}-#{$i * 10}-hover:hover {
+          background-color: #{$dark}#{$i * 10} !important;
+        }
+      }
+
+      .bg-#{$name} {
+        background-color: $dark !important;
+      }
+      .bg-#{$name}-hover:hover {
+        background-color: $dark !important;
+      }
+
+      .border-#{$name} {
+        @if $name == 'none' {
+          border: none !important;
+        } @else {
+          border-color: $dark !important;
+          border-style: solid;
+          border-width: 1px;
+
+          &-thick {
+            border-width: 2px;
+          }
+
+          &-thicker {
+            border-width: 3px;
+          }
+
+          &-thickest {
+            border-width: 4px;
+          }
+
+          &-dashed {
+            border-style: dashed;
+          }
+        }
+      }
+      .border-#{$name}-hover:hover {
+        border-color: $dark !important;
+        border-style: solid;
+        border-width: 1px;
+
+        &-thick {
+          border-width: 2px;
+        }
+
+        &-thicker {
+          border-width: 3px;
+        }
+
+        &-thickest {
+          border-width: 4px;
+        }
+
+        &-dashed {
+          border-style: dashed;
+        }
+      }
+
+      .inner-border-#{$name} {
+        @if $name == 'none' {
+          box-shadow: inset none !important;
+        } @else {
+          box-shadow: 0px 0px 0px 1px $dark !important;
+
+          &-thick {
+            box-shadow: 0px 0px 0px 2px $dark !important;
+          }
+
+          &-thicker {
+            box-shadow: 0px 0px 0px 3px $dark !important;
+          }
+
+          &-thickest {
+            box-shadow: 0px 0px 0px 4px $dark !important;
+          }
+        }
+      }
+      .inner-border-#{$name}-hover:hover {
+        box-shadow: 0px 0px 0px 1px $dark !important;
+
+        &-thick {
+          box-shadow: 0px 0px 0px 2px $dark !important;
+        }
+
+        &-thicker {
+          box-shadow: 0px 0px 0px 3px $dark !important;
+        }
+
+        &-thickest {
+          box-shadow: 0px 0px 0px 4px $dark !important;
+        }
+      }
+
+      .shadow-#{$name} {
+        @if $name == 'none' {
+          box-shadow: none !important;
+        } @else {
+          box-shadow: 0px 0px 10px 1px $dark !important;
+        }
+
+        &-dense {
+          &::before {
+            box-shadow: 0px 0px 5px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 5px 1px $dark !important;
+        }
+
+        &-denser {
+          &::before {
+            box-shadow: 0px 0px 3px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 3px 1px $dark !important;
+        }
+
+        &-densest {
+          &::before {
+            box-shadow: 0px 0px 1px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 1px 1px $dark !important;
+        }
+
+        &-spare {
+          &::before {
+            box-shadow: 0px 0px 10px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 10px 1px $dark !important;
+        }
+
+        &-sparer {
+          &::before {
+            box-shadow: 0px 0px 15px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 15px 1px $dark !important;
+        }
+
+        &-sparest {
+          &::before {
+            box-shadow: 0px 0px 20px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 20px 1px $dark !important;
+        }
+      }
+      .shadow-#{$name}-hover:hover {
+        box-shadow: 0px 0px 10px 1px $dark !important;
+
+        &-dense {
+          &::before {
+            box-shadow: 0px 0px 5px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 5px 1px $dark !important;
+        }
+
+        &-denser {
+          &::before {
+            box-shadow: 0px 0px 3px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 3px 1px $dark !important;
+        }
+
+        &-densest {
+          &::before {
+            box-shadow: 0px 0px 1px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 1px 1px $dark !important;
+        }
+
+        &-spare {
+          &::before {
+            box-shadow: 0px 0px 10px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 10px 1px $dark !important;
+        }
+
+        &-sparer {
+          &::before {
+            box-shadow: 0px 0px 15px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 15px 1px $dark !important;
+        }
+
+        &-sparest {
+          &::before {
+            box-shadow: 0px 0px 20px 1px $dark !important;
+          }
+          box-shadow: 0px 0px 20px 1px $dark !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin setButtonColors($type, $state, $colors) {
+  .button {
+    &::before {
+      box-shadow: none;
+    }
+    border: 1px solid;
+    // height: 48px;
+
+    width: 100%;
+
+    &.fit {
+      width: fit-content;
+    }
+
+    &.#{ $type } {
+      &:not(.flat) {
+        @if $state == '' {
+          background-color: map-get($colors, 'background');
+          border-color: map-get($colors, 'border');
+          color: map-get($colors, 'color');
+        } @else {
+          &.#{ $state } {
+            background-color: map-get($colors, 'background');
+            border-color: map-get($colors, 'border');
+            color: map-get($colors, 'color');
+          }
+        }
+      }
+
+      &.flat {
+        @if $state == '' {
+          background-color: transparent;
+          border-color: transparent;
+          color: map-get($colors, 'flat');
+        } @else {
+          &.-#{ $state } {
+            background-color: transparent;
+            border-color: transparent;
+            color: map-get($colors, 'flat');
+          }
+        }
+      }
+    }
+  }
+}

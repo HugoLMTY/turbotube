@@ -1,0 +1,19 @@
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#ea3625",
+    "statusBar.debuggingBackground": "#25d9ea",
+    "statusBar.debuggingForeground": "#15202b",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#ee6153",
+    "statusBarItem.remoteBackground": "#ea3625",
+    "statusBarItem.remoteForeground": "#e7e7e7"
+  },
+  "peacock.color": "#ea3625"
+}
