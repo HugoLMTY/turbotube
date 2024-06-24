@@ -552,7 +552,7 @@ watch(
   () => state.apiKey,
   () => {
     const current = localStorage.getItem('apiKey');
-    if (state.apiKey === 'current') {
+    if (state.apiKey === current) {
       return;
     }
 
@@ -564,7 +564,7 @@ watch(
   () => state.channelId,
   () => {
     const current = localStorage.getItem('channelId');
-    if (state.channelId === 'current') {
+    if (state.channelId === current) {
       return;
     }
 
