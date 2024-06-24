@@ -1,6 +1,10 @@
 <template>
   <div>
-    <q-btn icon="mdi-key-chain-outline" @click="state.showKeysModal = true" />
+    <q-btn
+      icon="mdi-cactus"
+      style="position: absolute"
+      @click="state.showKeysModal = true"
+    />
 
     <q-dialog v-model="state.showKeysModal">
       <q-card>
@@ -519,8 +523,8 @@ const playNextVideo = () => {
     return;
   }
 
-  state.queue = state.queue?.slice(1);
   selectVideo(state.queue[0]);
+  state.queue = state.queue?.slice(1);
 };
 
 const addToQueue = (video: IVideo) => {
