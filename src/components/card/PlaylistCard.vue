@@ -1,10 +1,6 @@
 <template>
   <q-card
-    class="bg-neutral-lowest shadow-neutral-lower"
-    :class="{
-      'col-shrink': !props.playlist.showDetails,
-      'col-6': props.playlist.showDetails,
-    }"
+    class="bg-neutral-lowest shadow-neutral-lower col-shrink"
     flat
     style="height: fit-content"
     :style="{
@@ -22,7 +18,7 @@
       />
     </q-card-section>
 
-    <!-- ? TITLE / COUNT -->
+    <!-- ? TITLE / COUNT / ACTIONS -->
     <q-card-section>
       <div class="row items-center justify-between">
         <span>
@@ -63,6 +59,16 @@
               @mouseover="state.hover.shuffle = true"
               @mouseout="state.hover.shuffle = false"
               @click="$emit('playlist:shuffle', props.playlist)"
+            />
+
+            <q-btn
+              flat
+              size="sm"
+              icon="mdi-playlist-plus"
+              :color="state.hover.queue ? 'primary' : ''"
+              @mouseover="state.hover.queue = true"
+              @mouseout="state.hover.queue = false"
+              @click="$emit('queue:playlist', props.playlist)"
             />
           </q-btn-dropdown>
         </div>
@@ -215,6 +221,7 @@ defineEmits([
   'playlist:shuffle',
   'playlist:details',
   'queue:add',
+  'queue:playlist',
 ]);
 
 const props = defineProps({
@@ -234,6 +241,7 @@ const state = reactive({
     list: false,
     play: false,
     shuffle: false,
+    queue: false,
   },
 });
 

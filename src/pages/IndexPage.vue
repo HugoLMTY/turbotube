@@ -1,11 +1,5 @@
 <template>
   <div>
-    <q-btn
-      icon="mdi-cactus"
-      style="position: absolute"
-      @click="state.showKeysModal = true"
-    />
-
     <q-dialog v-model="state.showKeysModal">
       <q-card>
         <q-card-section class="text-h6 q-pb-none">
@@ -99,12 +93,33 @@
     <q-slide-transition>
       <div
         v-if="state.currentlyPlaying"
-        class="row justify-center bg-neutral-lowest q-mb-sm q-px-lg q-pb-lg q-pt-sm not-selectable"
+        class="row justify-start bg-neutral-lowest q-mb-sm q-px-lg q-pb-lg q-pt-sm not-selectable"
+        :style="{
+          height: state.zenMode ? 'calc(100vh - 50px)' : 'auto',
+        }"
       >
-        <div class="col-12 row justify-end q-mb-sm">
+        <div class="col-12 row justify-end items-center q-mb-sm">
+          <div class="col-grow">
+            <span v-if="state.zenMode" class="text-bold text-subtitle2">
+              {{ state.currentlyPlaying.title }}
+            </span>
+          </div>
           <q-btn
             flat
-            dense
+            :dense="state.zenMode"
+            :icon="state.zenMode ? 'mdi-turbine' : 'mdi-monitor-shimmer'"
+            @click="state.zenMode = !state.zenMode"
+          />
+
+          <q-btn
+            flat
+            :dense="state.zenMode"
+            icon="mdi-cactus"
+            @click="state.showKeysModal = true"
+          />
+          <q-btn
+            flat
+            :dense="state.zenMode"
             icon="mdi-theme-light-dark"
             @click="$q.dark.toggle"
           />
@@ -114,6 +129,7 @@
                 v-for="size in stateless.thumbSizes"
                 :key="'size_control_' + size.key"
                 flat
+                :dense="state.zenMode"
                 :color="state.thumbSize === size.key ? 'primary' : ''"
                 :icon="size.icon"
                 @click="() => { state.thumbSize = size.key as EThumbSizes }"
@@ -122,13 +138,19 @@
           </q-btn-dropdown>
           <q-btn
             flat
+            :dense="state.zenMode"
             :icon="`mdi-playlist-music${state.queueOpened ? '' : '-outline'}`"
             @click="state.queueOpened = !state.queueOpened"
           />
         </div>
 
+        <span v-if="!state.zenMode" class="text-bold text-h6 text-left q-mb-sm">
+          {{ state.currentlyPlaying.title }}
+        </span>
+
         <YoutubePlayer
           :video="state.currentlyPlaying"
+          :zen="state.zenMode"
           @video:ended="playNextVideo"
         />
       </div>
@@ -142,12 +164,12 @@
         :playlist="playlist"
         :thumb-size="state.thumbSize"
         class="q-ma-md"
-        style="width: fit-content"
+        @queue:add="addToQueue"
+        @queue:playlist="addPlaylistToQueue"
         @video:select="selectVideo"
         @playlist:select="selectPlaylist"
-        @playlist:shuffle="selectPlaylist(playlist, true)"
         @playlist:details="toggleShowDetails"
-        @queue:add="addToQueue"
+        @playlist:shuffle="selectPlaylist(playlist, true)"
       />
     </div>
   </div>
@@ -288,6 +310,8 @@ const state = reactive({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   player: null as any,
+
+  zenMode: false,
 
   queueOverlay: false,
   queueOpened: true,
@@ -530,6 +554,21 @@ const playNextVideo = () => {
 const addToQueue = (video: IVideo) => {
   state.queue.push(video);
 };
+
+const addPlaylistToQueue = (playlist: IPlaylist) => {
+  state.queue = {
+    ...state.queue,
+    ...playlist.items,
+  };
+};
+
+watch(
+  () => state.zenMode,
+  (zen: boolean) => {
+    state.queueOpened = !zen;
+    // state.queueOverlay = zen;
+  }
+);
 
 watch(
   () => [state.queue],

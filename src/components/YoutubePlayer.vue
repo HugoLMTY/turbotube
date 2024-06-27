@@ -4,7 +4,12 @@
     :class="`rounded smooth-slowest ${state.glow}`"
     type="text/html"
     :src="currentUrl"
-    style="width: 100%; max-width: 1000px; aspect-ratio: 16 / 9"
+    style="
+      width: 100%;
+      max-width: 100vw;
+      max-height: calc(100vh - 110px);
+      aspect-ratio: 16 / 9;
+    "
     frameborder="0"
   />
 </template>
@@ -70,6 +75,10 @@ const props = defineProps({
     type: Object as PropType<IVideo>,
     default: null,
   },
+  zen: {
+    type: Boolean,
+    default: false,
+  },
 });
 const stateless = {
   glowingStates: [
@@ -120,6 +129,7 @@ const initPlayer = () => {
   try {
     state.player = new window.YT.Player('youtube-player', {
       events: {
+        // onReady: setupAudioAnalysis,
         onStateChange: onPlayerStateChange,
       },
     });
@@ -128,6 +138,24 @@ const initPlayer = () => {
   }
 };
 
+// const setupAudioAnalysis = () => {
+//   console.log({ setupAudio: true });
+//   const audioCtx = new window.AudioContext();
+//   const source = audioCtx.createMediaElementSource(
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     (state.player as any).getIframe()
+//     // .contentWindow.document.queySelector('video')
+//   );
+//   const analyser = audioCtx.createAnalyser();
+
+//   console.log({ analyser, source, audioCtx });
+
+//   source.connect(analyser);
+//   analyser.connect(audioCtx.destination);
+
+//   console.log({ analyser });
+// };
+
 const currentUrl = computed(() => {
   if (!props.video?.videoId) {
     return;
@@ -135,8 +163,11 @@ const currentUrl = computed(() => {
 
   const baseUrl = 'https://www.youtube.com/embed/';
   const params = {
-    autoplay: true,
+    autoplay: 1,
     enablejsapi: 1,
+    playsinline: 1,
+    fs: 1,
+    // end: 3,
   };
 
   const mapped = `${baseUrl}${props.video.videoId}?${Object.entries(params)
