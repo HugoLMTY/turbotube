@@ -52,7 +52,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: 'turbotube',
+      publicPath: '/turbotube/',
       // analyze: true,
       // env: {},
       // rawDefine: {}
