@@ -1,0 +1,30 @@
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.smooth {
+  transition-duration: #{$default-duration} !important;
+}
+@each $name, $duration in $animation-durations {
+  .smooth-#{$name} {
+    transition-duration: $duration !important;
+  }
+}
+
+.rounded {
+  border-radius: #{$default-rounded};
+}
+@each $name, $accentuation in $round-accentuations {
+  .rounded-#{$name} {
+    border-radius: $accentuation !important;
+  }
+}

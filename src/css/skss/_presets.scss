@@ -1,0 +1,45 @@
+$border-styles: (solid, dashed, dotted);
+
+$background-opacity: (10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+$default-border: 1px;
+$border-widths: (
+  thinest: 0.1px,
+  thiner: 0.3px,
+  thin: 0.5px,
+  thick: 2px,
+  thicker: 3px,
+  thickest: 4px,
+);
+
+$default-shadow: 0px 0px 10px 1px;
+$shadow-widths: (
+  densest: 0px 0px 3px 1px,
+  denser: 0px 0px 5px 1px,
+  dense: 0px 0px 5px 1px,
+  spare: 0px 0px 10px 1px,
+  sparer: 0px 0px 15px 1px,
+  sparest: 0px 0px 20px 1px,
+);
+
+$default-duration: 0.1s;
+$animation-durations: (
+  slowest: 0.5s,
+  slower: 0.3s,
+  slow: 0.2s,
+  quick: 0.07s,
+  quicker: 0.05s,
+  quickest: 0.03s,
+);
+
+$default-rounded: 8px;
+$round-accentuations: (
+  slightest: 2px,
+  slighter: 4px,
+  slight: 6px,
+  steep: 10px,
+  steeper: 12px,
+  steepest: 14px,
+  half: 25%,
+  full: 50%,
+);

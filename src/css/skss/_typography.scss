@@ -1,0 +1,40 @@
+.text {
+  &-capitalize {
+    text-transform: capitalize !important;
+  }
+  &-uppercase {
+    text-transform: uppercase !important;
+  }
+  &-lowercase {
+    text-transform: lowercase !important;
+  }
+
+  &-bold {
+    font-weight: bold;
+
+    &-700 {
+      font-weight: 700 !important;
+    }
+
+    &-900 {
+      font-weight: 900 !important;
+    }
+  }
+
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+
+  &-ellipsis {
+    max-width: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

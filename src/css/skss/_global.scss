@@ -1,3 +1,5 @@
+@import './mixins';
+@import './colors';
 
 @include setGlobalColors($neutral-lowest, $neutral-lowest, 'white');
 @include setGlobalColors($neutral-higher, $neutral-higher, 'black');
@@ -15,13 +17,25 @@
 @include setGlobalColors($primary-highest, $primary-lowest, 'primary-highest');
 
 @include setGlobalColors($secondary, $secondary, 'secondary');
-@include setGlobalColors($secondary-lowest, $secondary-higher, 'secondary-lowest');
+@include setGlobalColors(
+  $secondary-lowest,
+  $secondary-higher,
+  'secondary-lowest'
+);
 @include setGlobalColors($secondary-lower, $secondary-high, 'secondary-lower');
 @include setGlobalColors($secondary-low, $secondary-medium, 'secondary-low');
 @include setGlobalColors($secondary-medium, $secondary-low, 'secondary-medium');
 @include setGlobalColors($secondary-high, $secondary-lower, 'secondary-high');
-@include setGlobalColors($secondary-higher, $secondary-lower, 'secondary-higher');
-@include setGlobalColors($secondary-highest, $secondary-lowest, 'secondary-highest');
+@include setGlobalColors(
+  $secondary-higher,
+  $secondary-lower,
+  'secondary-higher'
+);
+@include setGlobalColors(
+  $secondary-highest,
+  $secondary-lowest,
+  'secondary-highest'
+);
 
 @include setGlobalColors($neutral-lowest, $neutral-higher, 'neutral-lowest');
 @include setGlobalColors($neutral-lower, $neutral-high, 'neutral-lower');
@@ -49,44 +63,68 @@
 @include setGlobalColors($danger-higher, $danger-lower, 'danger-higher');
 @include setGlobalColors($danger-highest, $danger-lowest, 'danger-highest');
 
-@include setButtonColors('primary', '', (
-  'background': $primary-medium,
-  'border': $primary-medium,
-  'color': $primary-lowest,
-  'flat': $primary-medium
-));
+@include setButtonColors(
+  'primary',
+  '',
+  (
+    'background': $primary-medium,
+    'border': $primary-medium,
+    'color': $primary-lowest,
+    'flat': $primary-medium,
+  )
+);
 
-@include setButtonColors('primary', 'disable', (
-  'background': $primary-low,
-  'border': $primary-low,
-  'color': $primary-lower,
-  'flat': $primary-lower
-));
+@include setButtonColors(
+  'primary',
+  'disable',
+  (
+    'background': $primary-low,
+    'border': $primary-low,
+    'color': $primary-lower,
+    'flat': $primary-lower,
+  )
+);
 
-@include setButtonColors('secondary', '', (
-  'background': $primary-lower,
-  'border': $primary-lower,
-  'color': $primary-medium,
-  'flat': $primary-low
-));
+@include setButtonColors(
+  'secondary',
+  '',
+  (
+    'background': $primary-lower,
+    'border': $primary-lower,
+    'color': $primary-medium,
+    'flat': $primary-low,
+  )
+);
 
-@include setButtonColors('secondary', 'disable', (
-  'background': $primary-lowest,
-  'border': $primary-lowest,
-  'color': $primary-low,
-  'flat': $primary-low
-));
+@include setButtonColors(
+  'secondary',
+  'disable',
+  (
+    'background': $primary-lowest,
+    'border': $primary-lowest,
+    'color': $primary-low,
+    'flat': $primary-low,
+  )
+);
 
-@include setButtonColors('tertiary', '', (
-  'background': $neutral-lowest,
-  'border': $neutral-low,
-  'color': $neutral-high,
-  'flat': $neutral-high
-));
+@include setButtonColors(
+  'tertiary',
+  '',
+  (
+    'background': $neutral-lowest,
+    'border': $neutral-low,
+    'color': $neutral-high,
+    'flat': $neutral-high,
+  )
+);
 
-@include setButtonColors('tertiary', 'disable', (
-  'background': $neutral-lowest,
-  'border': $neutral-low,
-  'color': $neutral-low,
-  'flat': $neutral-low
-));
+@include setButtonColors(
+  'tertiary',
+  'disable',
+  (
+    'background': $neutral-lowest,
+    'border': $neutral-low,
+    'color': $neutral-low,
+    'flat': $neutral-low,
+  )
+);

@@ -1,0 +1,132 @@
+@mixin setGlobalColors($light, $dark, $name) {
+  @include setGlobalClass($name, $light, 'light');
+  @include setGlobalClass($name, $dark, 'dark');
+}
+
+@mixin setGlobalClass($name, $color, $theme) {
+  :root {
+    body.body--#{theme} {
+      #{"--"+$name}: $color;
+    }
+  }
+
+  body.body--#{$theme} {
+    // ? TEXT
+    .text-#{$name},
+    .text-#{$name}-hover:hover {
+      color: $color !important;
+    }
+
+    // ? BACKGROUND
+    .bg-#{$name},
+    .bg-#{$name}-hover:hover {
+      background-color: $color !important;
+    }
+    @each $opacity in $background-opacity {
+      .bg-#{$name}-#{$opacity},
+      .bg-#{$name}-#{$opacity}-hover:hover {
+        background-color: #{$color}#{$opacity} !important;
+      }
+    }
+  }
+
+  // ? BORDERS / INNER BORDERS / SHADOW
+  @if $name == 'none' {
+    .border-#{$name} {
+      border: none !important;
+    }
+
+    .inner-border-#{$name} {
+      box-shadow: inset none !important;
+    }
+
+    .shadow-#{$name} {
+      box-shadow: none !important;
+    }
+  } @else {
+    .border-#{$name},
+    .border-#{$name}-hover:hover {
+      border: #{$default-border} solid $color;
+    }
+
+    .inner-border-#{$name},
+    .inner-border-#{$name}-hover:hover {
+      box-shadow: inset 0px 0px 0px #{$default-border} $color;
+    }
+
+    .shadow-#{$name},
+    .shadow-#{$name}-hover:hover {
+      box-shadow: #{$default-shadow} $color;
+    }
+
+    @each $width-name, $width-value in $border-widths {
+      .inner-border-#{$name}-#{$width-name},
+      .inner-border-#{$name}-#{$width-name}-hover:hover {
+        box-shadow: inset 0px 0px 0px $width-value $color !important;
+      }
+
+      @each $style in $border-styles {
+        .border-#{$name}-#{$width-name}-#{$style},
+        .border-#{$name}-#{$width-name}-#{$style}-hover:hover {
+          border-color: $color !important;
+          border-width: $width-value !important;
+          border-style: $style !important;
+        }
+      }
+    }
+
+    @each $width-name, $width-value in $shadow-widths {
+      .shadow-#{$name}-#{width-name},
+      .shadow-#{$name}-#{width-name}-hover:hover {
+        box-shadow: $width-value $color;
+      }
+    }
+  }
+}
+
+@mixin setButtonColors($type, $state, $colors) {
+  .button {
+    &::before {
+      box-shadow: none;
+    }
+    border: 1px solid;
+
+    .full {
+      width: 100%;
+    }
+
+    &.fit {
+      width: fit-content;
+    }
+
+    &.#{ $type } {
+      &:not(.flat) {
+        @if $state == '' {
+          background-color: map-get($colors, 'background');
+          border-color: map-get($colors, 'border');
+          color: map-get($colors, 'color');
+        } @else {
+          &.#{ $state } {
+            background-color: map-get($colors, 'background');
+            border-color: map-get($colors, 'border');
+            color: map-get($colors, 'color');
+          }
+        }
+      }
+
+      &.flat {
+        @if $state == '' {
+          background-color: transparent;
+          border-color: transparent;
+          color: map-get($colors, 'flat');
+        } @else {
+          &.-#{ $state } {
+            background-color: transparent;
+            border-color: transparent;
+            color: map-get($colors, 'flat');
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,6 @@
 // app global css in SCSS form
 @import './fonts.scss';
-@import './colors.scss';
-@import './mixins.scss';
-@import './global.scss';
+@import './skss/main';
 
 body {
   font-family: 'DM sans' !important;
@@ -22,90 +20,4 @@ body {
 
 .dm {
   font-family: 'DM Sans' !important;
-}
-
-.smooth {
-  transition-duration: 0.1s !important;
-
-  &-slowest {
-    transition-duration: 0.5s;
-  }
-
-  &-slower {
-    transition-duration: 0.3s;
-  }
-
-  &-slow {
-    transition-duration: 0.2s;
-  }
-
-  &-quick {
-    transition-duration: 0.07s;
-  }
-
-  &-quicker {
-    transition-duration: 0.05s;
-  }
-
-  &-quicker {
-    transition-duration: 0.03s;
-  }
-}
-
-.not-selectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.clickable {
-  cursor: pointer !important;
-}
-
-.text {
-  &-capitalize {
-    text-transform: capitalize !important;
-  }
-  &-uppercase {
-    text-transform: uppercase !important;
-  }
-  &-lowercase {
-    text-transform: lowercase !important;
-  }
-
-  &-bold {
-    font-weight: bold;
-
-    &-700 {
-      font-weight: 700 !important;
-    }
-
-    &-900 {
-      font-weight: 900 !important;
-    }
-  }
-
-  &-center {
-    text-align: center;
-  }
-  &-right {
-    text-align: right;
-  }
-  &-left {
-    text-align: left;
-  }
-
-  &-ellipsis {
-    max-width: inherit;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.rounded {
-  border-radius: 8px;
 }

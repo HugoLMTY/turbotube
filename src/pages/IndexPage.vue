@@ -494,7 +494,7 @@ const selectVideo = async (video: IVideo, queueIndex = null) => {
   state.history.unshift({ type: 'video', video });
 
   if (queueIndex) {
-    state.queue = state.queue?.slice(queueIndex);
+    state.queue = state.queue?.slice(queueIndex + 1);
   }
   state.currentlyPlaying = video;
 };
