@@ -8,24 +8,32 @@
 @include setGlobalColors($accent, $accent, 'accent');
 
 @include setGlobalColors($primary, $primary, 'primary');
-@include setGlobalColors($primary-lowest, $primary-higher, 'primary-lowest');
-@include setGlobalColors($primary-lower, $primary-high, 'primary-lower');
-@include setGlobalColors($primary-low, $primary-medium, 'primary-low');
-@include setGlobalColors($primary-medium, $primary-low, 'primary-medium');
-@include setGlobalColors($primary-high, $primary-lower, 'primary-high');
+@include setGlobalColors($primary-lowest, $primary-highest, 'primary-lowest');
+@include setGlobalColors($primary-lower, $primary-higher, 'primary-lower');
+@include setGlobalColors($primary-low, $primary-high, 'primary-low');
+@include setGlobalColors($primary-medium, $primary-medium, 'primary-medium');
+@include setGlobalColors($primary-high, $primary-low, 'primary-high');
 @include setGlobalColors($primary-higher, $primary-lower, 'primary-higher');
 @include setGlobalColors($primary-highest, $primary-lowest, 'primary-highest');
 
 @include setGlobalColors($secondary, $secondary, 'secondary');
 @include setGlobalColors(
   $secondary-lowest,
-  $secondary-higher,
+  $secondary-highest,
   'secondary-lowest'
 );
-@include setGlobalColors($secondary-lower, $secondary-high, 'secondary-lower');
-@include setGlobalColors($secondary-low, $secondary-medium, 'secondary-low');
-@include setGlobalColors($secondary-medium, $secondary-low, 'secondary-medium');
-@include setGlobalColors($secondary-high, $secondary-lower, 'secondary-high');
+@include setGlobalColors(
+  $secondary-lower,
+  $secondary-higher,
+  'secondary-lower'
+);
+@include setGlobalColors($secondary-low, $secondary-high, 'secondary-low');
+@include setGlobalColors(
+  $secondary-medium,
+  $secondary-medium,
+  'secondary-medium'
+);
+@include setGlobalColors($secondary-high, $secondary-low, 'secondary-high');
 @include setGlobalColors(
   $secondary-higher,
   $secondary-lower,
@@ -37,29 +45,28 @@
   'secondary-highest'
 );
 
-@include setGlobalColors($neutral-lowest, $neutral-higher, 'neutral-lowest');
-@include setGlobalColors($neutral-lower, $neutral-high, 'neutral-lower');
-@include setGlobalColors($neutral-low, $neutral-medium, 'neutral-low');
-@include setGlobalColors($neutral-medium, $neutral-low, 'neutral-medium');
-@include setGlobalColors($neutral-high, $neutral-lower, 'neutral-high');
+@include setGlobalColors($neutral-lowest, $neutral-highest, 'neutral-lowest');
+@include setGlobalColors($neutral-lower, $neutral-higher, 'neutral-lower');
+@include setGlobalColors($neutral-low, $neutral-high, 'neutral-low');
+@include setGlobalColors($neutral-medium, $neutral-medium, 'neutral-medium');
+@include setGlobalColors($neutral-high, $neutral-low, 'neutral-high');
 @include setGlobalColors($neutral-higher, $neutral-lower, 'neutral-higher');
 @include setGlobalColors($neutral-highest, $neutral-lowest, 'neutral-highest');
 
 @include setGlobalColors($warning, $warning, 'warning');
-@include setGlobalColors($warning-lowest, $warning-higher, 'warning-lowest');
-@include setGlobalColors($warning-lower, $warning-high, 'warning-lower');
-@include setGlobalColors($warning-low, $warning-medium, 'warning-low');
-@include setGlobalColors($warning-medium, $warning-low, 'warning-medium');
-@include setGlobalColors($warning-high, $warning-lower, 'warning-high');
+@include setGlobalColors($warning-lowest, $warning-highest, 'warning-lowest');
+@include setGlobalColors($warning-lower, $warning-higher, 'warning-lower');
+@include setGlobalColors($warning-low, $warning-high, 'warning-low');
+@include setGlobalColors($warning-medium, $warning-medium, 'warning-medium');
+@include setGlobalColors($warning-high, $warning-low, 'warning-high');
 @include setGlobalColors($warning-higher, $warning-lower, 'warning-higher');
 @include setGlobalColors($warning-highest, $warning-lowest, 'warning-highest');
 
-@include setGlobalColors($danger-lowest, $danger-higher, 'danger-lowest');
-@include setGlobalColors($danger-lower, $danger-high, 'danger-lower');
-@include setGlobalColors($danger-low, $danger-medium, 'danger-low');
-@include setGlobalColors($danger-medium, $danger-low, 'danger-medium');
-@include setGlobalColors($danger-high, $danger-lower, 'danger-high');
-@include setGlobalColors($danger-higher, $danger-lower, 'danger-higher');
+@include setGlobalColors($danger-lowest, $danger-highest, 'danger-lowest');
+@include setGlobalColors($danger-lower, $danger-higher, 'danger-lower');
+@include setGlobalColors($danger-low, $danger-high, 'danger-low');
+@include setGlobalColors($danger-medium, $danger-medium, 'danger-medium');
+@include setGlobalColors($danger-high, $danger-low, 'danger-high');
 @include setGlobalColors($danger-higher, $danger-lower, 'danger-higher');
 @include setGlobalColors($danger-highest, $danger-lowest, 'danger-highest');
 

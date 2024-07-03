@@ -117,12 +117,12 @@
             icon="mdi-cactus"
             @click="state.showKeysModal = true"
           />
-          <q-btn
+          <!-- <q-btn
             flat
             :dense="state.zenMode"
             icon="mdi-theme-light-dark"
             @click="$q.dark.toggle"
-          />
+          /> -->
           <q-btn-dropdown flat dense icon="mdi-move-resize">
             <div class="column">
               <q-btn
@@ -182,10 +182,16 @@ import { reactive } from 'vue';
 import axios from 'axios';
 // import { computed } from 'vue';
 import { defineAsyncComponent } from 'vue';
-import { useQuasar } from 'quasar';
+// import { useQuasar } from 'quasar';
 import { watch } from 'vue';
 
-const $q = useQuasar();
+import {
+  EThumbSizes,
+  IVideo,
+  IPlaylist,
+} from 'src/interfaces/turbo.interfaces';
+
+// const $q = useQuasar();
 
 const SideDrawer = defineAsyncComponent(
   () => import('src/components/SideDrawer.vue')
@@ -196,80 +202,6 @@ const PlaylistCard = defineAsyncComponent(
 const YoutubePlayer = defineAsyncComponent(
   () => import('src/components/YoutubePlayer.vue')
 );
-
-enum EThumbSizes {
-  default = 'default',
-  medium = 'medium',
-  high = 'high',
-  standard = 'standard',
-  maxres = 'maxres',
-}
-
-interface IThumbnail {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface IThumbnails {
-  default: IThumbnail;
-  medium: IThumbnail;
-  high: IThumbnail;
-  standard: IThumbnail;
-  maxres: IThumbnail;
-}
-
-interface IResponseObject {
-  item: object;
-  id: string;
-
-  thumbnails: IThumbnails;
-}
-
-interface IVideo extends IResponseObject {
-  videoId: string;
-  playlistId: string;
-
-  title: string;
-  description: string;
-  videoOwnerChannelTitle: string;
-
-  video: {
-    id: string;
-    player: {
-      embedHtml: string;
-    };
-  };
-
-  position: number;
-
-  hover?: boolean;
-  hovers: {
-    queue: boolean;
-  };
-}
-
-interface IPlaylist extends IResponseObject {
-  title: string;
-  author: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  items: IVideo[];
-  count: number;
-
-  player: string;
-  showDetails: boolean;
-
-  hover: {
-    play: boolean;
-    shuffle: boolean;
-    list: boolean;
-  };
-
-  loading: {
-    items: boolean;
-  };
-}
 
 const stateless = {
   path: 'https://youtube.googleapis.com/youtube/v3',
@@ -321,16 +253,16 @@ const state = reactive({
 });
 
 const initKeys = () => {
-  const [apiKey, channelId] = [
-    localStorage.getItem('apiKey'),
-    localStorage.getItem('channelId'),
-  ];
-  console.log({ apiKey, channelId });
+  const keys = stateless.requiredKeys?.map(({ model }) => {
+    const key = localStorage.getItem(model) || '';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (state as any)[model] = key;
 
-  state.apiKey = apiKey;
-  state.channelId = channelId;
+    return !!key;
+  });
 
-  state.showKeysModal = !state.apiKey || !state.channelId;
+  state.showKeysModal = keys.some((exists) => !exists);
+
   return !state.showKeysModal;
 };
 
@@ -525,7 +457,7 @@ const mapVideo = (item: any, populatedVideos: any) => {
       queue: false,
     },
   } as IVideo;
-  // console.log({ data });
+  console.log({ data });
 
   return data;
 };

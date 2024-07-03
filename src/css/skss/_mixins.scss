@@ -46,17 +46,17 @@
   } @else {
     .border-#{$name},
     .border-#{$name}-hover:hover {
-      border: #{$default-border} solid $color;
+      border: #{$default-border-width} solid $color !important;
     }
 
     .inner-border-#{$name},
     .inner-border-#{$name}-hover:hover {
-      box-shadow: inset 0px 0px 0px #{$default-border} $color;
+      box-shadow: inset 0px 0px 0px #{$default-border-width} $color !important;
     }
 
     .shadow-#{$name},
     .shadow-#{$name}-hover:hover {
-      box-shadow: #{$default-shadow} $color;
+      box-shadow: #{$default-shadow} $color !important;
     }
 
     @each $width-name, $width-value in $border-widths {
@@ -65,9 +65,30 @@
         box-shadow: inset 0px 0px 0px $width-value $color !important;
       }
 
+      .border-#{$name}-#{$width-name},
+      .border-#{$name}-#{$width-name}-hover:hover {
+        border-color: $color !important;
+        border-width: $width-value !important;
+        border-style: solid !important;
+      }
+
       @each $style in $border-styles {
+        .border-#{$name}-#{$style},
+        .border-#{$name}-#{$style}-hover:hover {
+          border-color: $color !important;
+          border-width: $default-border-width !important;
+          border-style: $style !important;
+        }
+
         .border-#{$name}-#{$width-name}-#{$style},
         .border-#{$name}-#{$width-name}-#{$style}-hover:hover {
+          border-color: $color !important;
+          border-width: $width-value !important;
+          border-style: $style !important;
+        }
+
+        .border-#{$name}-#{$style}-#{$width-name},
+        .border-#{$name}-#{$style}-#{$width-name}-hover:hover {
           border-color: $color !important;
           border-width: $width-value !important;
           border-style: $style !important;
@@ -78,7 +99,7 @@
     @each $width-name, $width-value in $shadow-widths {
       .shadow-#{$name}-#{$width-name},
       .shadow-#{$name}-#{$width-name}-hover:hover {
-        box-shadow: $width-value $color;
+        box-shadow: $width-value $color !important;
       }
     }
   }

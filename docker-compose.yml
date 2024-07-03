@@ -1,5 +1,6 @@
 services:
   turbo-front:
+    container_name: turbo-front
     image: node:20
     volumes:
       - .:/app
@@ -10,11 +11,12 @@ services:
     environment:
       - API_KEY=${API_KEY}
 
-  # annuairebio_api:
-  #   working_dir: /app
-  #   image: node:18
-  #   volumes:
-  #     - ./backend:/app
-  #   ports:
-  #     - ${QUASAR_PORT:-9001}d:9001
-  #   command: sh -c 'cd backend && node index.js'
+  turbo-api:
+    container_name: turbo-api
+    image: node:20
+    volumes:
+      - .:/app
+    ports:
+      - ${API_PORT:-3069}:3069
+    working_dir: /app
+    command: sh -c 'cd api && node app.js'

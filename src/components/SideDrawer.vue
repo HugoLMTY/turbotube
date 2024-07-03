@@ -76,81 +76,11 @@ import { watch } from 'vue';
 import { defineAsyncComponent } from 'vue';
 import { onMounted, PropType } from 'vue';
 import { reactive } from 'vue';
+import { IVideo, IPlaylist } from 'src/interfaces/turbo.interfaces';
 
 const VideoCard = defineAsyncComponent(
   () => import('src/components/card/VideoCard.vue')
 );
-
-// enum EThumbSizes {
-//   default = 'default',
-//   medium = 'medium',
-//   high = 'high',
-//   standard = 'standard',
-//   maxres = 'maxres',
-// }
-
-interface IThumbnail {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface IThumbnails {
-  default: IThumbnail;
-  medium: IThumbnail;
-  high: IThumbnail;
-  standard: IThumbnail;
-  maxres: IThumbnail;
-}
-
-interface IResponseObject {
-  item: object;
-  id: string;
-
-  thumbnails: IThumbnails;
-}
-
-interface IVideo extends IResponseObject {
-  videoId: string;
-  playlistId: string;
-
-  title: string;
-  description: string;
-  videoOwnerChannelTitle: string;
-
-  video: {
-    id: string;
-    player: {
-      embedHtml: string;
-    };
-  };
-
-  position: number;
-
-  hover?: boolean;
-}
-
-interface IPlaylist extends IResponseObject {
-  title: string;
-  author: string;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  items: IVideo[];
-  count: number;
-
-  player: string;
-  showDetails: boolean;
-
-  hover: {
-    play: boolean;
-    shuffle: boolean;
-    list: boolean;
-  };
-
-  loading: {
-    items: boolean;
-  };
-}
 
 defineEmits(['video:select', 'update:queueOpened', 'update:queueOverlay']);
 const props = defineProps({

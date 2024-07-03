@@ -19,6 +19,7 @@ import { PropType } from 'vue';
 import { watch } from 'vue';
 import { computed, onMounted } from 'vue';
 import { reactive } from 'vue';
+import { IVideo } from 'src/interfaces/turbo.interfaces';
 
 declare global {
   interface Window {
@@ -26,47 +27,6 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     YT: any;
   }
-}
-
-interface IThumbnail {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface IThumbnails {
-  default: IThumbnail;
-  medium: IThumbnail;
-  high: IThumbnail;
-  standard: IThumbnail;
-  maxres: IThumbnail;
-}
-
-interface IResponseObject {
-  item: object;
-  id: string;
-
-  thumbnails: IThumbnails;
-}
-
-interface IVideo extends IResponseObject {
-  videoId: string;
-  playlistId: string;
-
-  title: string;
-  description: string;
-  videoOwnerChannelTitle: string;
-
-  video: {
-    id: string;
-    player: {
-      embedHtml: string;
-    };
-  };
-
-  position: number;
-
-  hover?: boolean;
 }
 
 const emits = defineEmits(['video:playing', 'video:paused', 'video:ended']);
@@ -173,7 +133,7 @@ const currentUrl = computed(() => {
   const mapped = `${baseUrl}${props.video.videoId}?${Object.entries(params)
     ?.map((p) => `${p[0]}=${p[1]}`)
     ?.join('&')}`;
-  console.log({ mapped });
+  // console.log({ mapped });
 
   return mapped;
 });

@@ -20,11 +20,39 @@
   }
 }
 
-.rounded {
+.rounded,
+.rounded-hover:hover {
   border-radius: #{$default-rounded};
 }
 @each $name, $accentuation in $round-accentuations {
-  .rounded-#{$name} {
+  .rounded-#{$name},
+  .rounded-#{$name}-hover:hover {
     border-radius: $accentuation !important;
+  }
+}
+
+.inherit {
+  width: inherit;
+  height: inherit;
+
+  &-width {
+    width: inherit;
+  }
+
+  &-height {
+    height: inherit;
+  }
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+
+  &-width {
+    width: 100%;
+  }
+
+  &-height {
+    height: 100%;
   }
 }
