@@ -76,8 +76,8 @@
     }
 
     @each $width-name, $width-value in $shadow-widths {
-      .shadow-#{$name}-#{width-name},
-      .shadow-#{$name}-#{width-name}-hover:hover {
+      .shadow-#{$name}-#{$width-name},
+      .shadow-#{$name}-#{$width-name}-hover:hover {
         box-shadow: $width-value $color;
       }
     }
